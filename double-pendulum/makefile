@@ -5,7 +5,7 @@ LIBS = -lmujoco -lglfw
 CC = gcc
 
 
-ROOT = hello
+ROOT = pendulum
 
 all:
 	$(CC) $(COMMON) main.c $(LIBS) -o $(ROOT)

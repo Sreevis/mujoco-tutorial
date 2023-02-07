@@ -1,4 +1,4 @@
 reset
 make clean
 make
-./hello
+./pendulum

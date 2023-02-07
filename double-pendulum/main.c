@@ -11,7 +11,7 @@
 #include "string.h"
 
 
-char filename[] = "hello.xml";
+char filename[] = "pendulum.xml";
 
 // MuJoCo data structures
 mjModel* m = NULL;                  // MuJoCo model

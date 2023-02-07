@@ -1,0 +1,60 @@
+<mujoco model="quadruped">
+  <!-- <compiler coordinate="global"/> -->
+
+  <default>
+    <geom rgba=".8 .6 .4 1"/>
+  </default>
+
+  <asset>
+    <texture type="skybox" builtin="gradient" rgb1="1 1 1" rgb2=".6 .8 1" width="256" height="256"/>
+    <texture name="body" type="cube" builtin="flat" mark="cross" width="127" height="1278"
+             rgb1="0.8 0.6 0.4" rgb2="0.8 0.6 0.4" markrgb="1 1 1" random="0.01"/>
+    <material name="body" texture="body" texuniform="true" rgba="0.8 0.8 0.8 1"/>
+    <texture name="grid" type="2d" builtin="checker" width="512" height="512" rgb1=".1 .2 .3" rgb2=".2 .3 .4"/>
+    <material name="grid" texture="grid" texrepeat="1 1" texuniform="true" reflectance=".2"/>
+  </asset>
+    <visual>
+    <map force="0.1" zfar="30"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+    <quality shadowsize="4096"/> 
+    <global offwidth="800" offheight="800"/>
+
+  </visual>
+
+  <worldbody>
+  <geom name="floor" size="0 0 .05" type="plane" material="grid" condim="3"/>
+  <light name="spotlight" mode="targetbodycom" target="torso"
+           diffuse=".8 .8 .8" specular="0.3 0.3 0.3" pos="0 0 50" cutoff="60" />
+    <body name="torso" pos="0 0 1">
+      <!-- <freejoint name="root"/> -->
+      <!-- <joint name="pin" type="hinge" pos="0 0 0.5" axis="0 -1 0" /> -->
+      <geom type="box" size="0.2 0.2 0.03" pos="0 0 0"/>
+      <inertial mass="1" pos="0 0 0" diaginertia="0.1 0.1 0.1"/>
+          <body name="fright1" pos="0.2 -0.2 -0.06" euler="-45 -45 0">
+            <joint name="fj1" type="hinge" pos="0.0 0.0 0.0" axis="0 0 1"/>
+            <geom type="capsule"  size="0.02 0.064"/>
+            	<body name="fright2"pos="0 0 -0.064" euler="0 0 0">
+                <joint name="fj2" type="hinge" pos="0 0 0.5" axis="0 -1 1" />
+                <geom type="capsule" size=".02 .064" rgba="0 0 0.9 1" />
+                <inertial mass="1" pos="0 0 0" diaginertia="0.1 0.1 0.1"/>
+			        </body>
+          </body>
+          <body name="fleft" pos="0.2 0.2 -0.064">
+            <joint type="hinge" pos="0.0 0.0 0.0" axis="0 0 1"/>
+            <geom type="capsule"  size="0.02 0.064"/>
+          </body>
+          <body name="bright" pos="-0.2 -0.2 -0.064">
+            <joint type="hinge" pos="0.0 0.0 0.0" axis="0 0 1"/>
+            <geom type="capsule"  size="0.02 0.064"/>
+          </body>
+          <body name="bleft" pos="-0.2 0.2 -0.064">
+            <joint type="hinge" pos="0.0 0.0 0.0" axis="0 0 1"/>
+            <geom type="capsule"  size="0.02 0.064"/>
+          </body>
+    </body>
+
+
+  </worldbody>
+
+
+</mujoco>
